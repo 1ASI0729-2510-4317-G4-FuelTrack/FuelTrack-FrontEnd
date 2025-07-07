@@ -39,7 +39,7 @@ import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
 })
 export class OrdersComponent implements OnInit {
   displayedColumns: string[] = [
-    
+
     'expand',
     'created',
     'user',

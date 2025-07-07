@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "outputPath": "dist/fueltrack-front-end",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
