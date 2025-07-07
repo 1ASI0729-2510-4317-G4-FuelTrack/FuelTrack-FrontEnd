@@ -1,0 +1,81 @@
+.orders-section {
+  padding: 1rem 2rem;
+}
+
+.orders-header {
+  background-color: #1a237e;
+  color: white;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-group h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.title-group p {
+  margin: 0;
+  font-size: 1rem;
+  color: #bbdefb;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.mat-header-cell {
+  background-color: #e8eaf6;
+  font-weight: bold;
+}
+
+.mat-cell {
+  padding: 1rem;
+}
+
+.status-chip {
+  padding: 4px 8px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pendiente {
+  background-color: #ff9800;
+}
+.status-en-proceso {
+  background-color: #2196f3;
+}
+.status-completada {
+  background-color: #4caf50;
+}
+.status-cancelada {
+  background-color: #f44336;
+}
+
+.expanded-panel mat-card {
+  margin: 1rem 0;
+  background-color: #f9fbe7;
+}
+
+.expanded-panel mat-card-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 0.5rem;
+  color: #37474f;
+}
+
+.expanded-panel mat-card-content p {
+  margin: 0.25rem 0;
+}

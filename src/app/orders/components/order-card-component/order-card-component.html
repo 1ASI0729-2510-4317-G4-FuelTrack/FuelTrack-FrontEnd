@@ -1,0 +1,45 @@
+<h2>Create Order</h2>
+<form [formGroup]="orderForm">
+  <!-- Requester ID -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Requester ID</mat-label>
+    <input matInput formControlName="requesterId" required />
+    <mat-error *ngIf="orderForm.get('requesterId')?.hasError('required')">
+      Requester ID is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Terminal -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Terminal</mat-label>
+    <mat-select formControlName="terminal">
+      <mat-option *ngFor="let terminal of terminals" [value]="terminal">{{ terminal }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Detalles (Fuel, Amount, Note) -->
+  <div formArrayName="details">
+    <div *ngFor="let detail of details.controls; let i = index" [formGroupName]="i">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fuel Type</mat-label>
+        <mat-select formControlName="fuel" required>
+          <mat-option *ngFor="let fuel of fuelTypes" [value]="fuel">{{ fuel }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount" type="number" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Note</mat-label>
+        <textarea matInput formControlName="note"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <button mat-raised-button color="primary" (click)="createOrder()">Create Order</button>
+  <button mat-button color="warn" (click)="close()">Cancel</button>
+</form>

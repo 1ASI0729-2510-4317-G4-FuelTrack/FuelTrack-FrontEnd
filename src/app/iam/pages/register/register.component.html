@@ -1,0 +1,39 @@
+<header class="header">
+  <div class="logo-text">FuelTrack</div>
+  <div class="auth-buttons">
+    <button class="login-btn" routerLink="/login">Iniciar sesión</button>
+  </div>
+</header>
+
+
+<div class="register-container">
+  <div class="register-card">
+    <img src="assets/logo-fueltrack.png" alt="FuelTrack Logo" class="logo" />
+
+    <h2>Registro</h2>
+
+    <div class="role-selector">
+      <button [class.active]="isClient" (click)="toggleRole('client')">Solicitante</button>
+      <button [class.active]="!isClient" (click)="toggleRole('supplier')">Proveedor</button>
+    </div>
+
+    <form>
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="email" name="email" required />
+
+      <label>DNI:</label>
+      <input type="text" [(ngModel)]="dni" name="dni" required />
+
+      <div *ngIf="!isClient">
+        <label>RUC:</label>
+        <input type="text" [(ngModel)]="ruc" name="ruc" required />
+      </div>
+
+      <label>Contraseña:</label>
+      <input type="password" [(ngModel)]="password" name="password" required />
+
+      <button type="button" (click)="register()">Registrarse</button>
+    </form>
+  </div>
+</div>
+

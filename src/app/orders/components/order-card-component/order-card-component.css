@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  padding: 24px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.detail-box, .payment-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #f9fafb;
+}
+
+.half-width {
+  width: 48%;
+  margin-right: 4%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.wizard-buttons {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.half-width:nth-child(2n) {
+  margin-right: 0;
+}
+
+button[mat-stroked-button] {
+  margin-top: 12px;
+}

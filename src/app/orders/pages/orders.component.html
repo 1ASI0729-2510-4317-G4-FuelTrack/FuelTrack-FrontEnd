@@ -1,0 +1,92 @@
+<section class="orders-section">
+  <!-- Encabezado -->
+  <header class="orders-header mat-elevation-z2">
+    <div class="title-group">
+      <h2>{{ 'Ordenes' | translate }}</h2>
+      <p>{{ 'Gestion de pedido de ordenes' | translate }}</p>
+    </div>
+    <button mat-raised-button color="primary" (click)="openOrderWizard()">
+      <mat-icon>add</mat-icon>
+      {{ 'ORDER.CREATE' | translate }}
+    </button>
+  </header>
+
+  <!-- Tabla de órdenes -->
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="orders" class="mat-elevation-z4" multiTemplateDataRows>
+
+      <!-- Expand -->
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let order">
+          <button mat-icon-button (click)="toggleRow(order); $event.stopPropagation()">
+            <mat-icon>{{ expandedElement === order ? 'expand_less' : 'expand_more' }}</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Created -->
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef>{{ 'ORDER.CREATED' | translate }}</th>
+        <td mat-cell *matCellDef="let order">{{ order.created | date: 'short' }}</td>
+      </ng-container>
+
+      <!-- User -->
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>{{ 'ORDER.USER' | translate }}</th>
+        <td mat-cell *matCellDef="let order">{{ order.user }}</td>
+      </ng-container>
+
+      <!-- Amount -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>{{ 'ORDER.AMOUNT' | translate }}</th>
+        <td mat-cell *matCellDef="let order">{{ order.amount }}</td>
+      </ng-container>
+
+      <!-- Terminal -->
+      <ng-container matColumnDef="terminal">
+        <th mat-header-cell *matHeaderCellDef>{{ 'ORDER.TERMINAL' | translate }}</th>
+        <td mat-cell *matCellDef="let order">{{ order.terminal }}</td>
+      </ng-container>
+
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{ 'ORDER.ID' | translate }}</th>
+        <td mat-cell *matCellDef="let order">{{ order.id }}</td>
+      </ng-container>
+
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>{{ 'ORDER.STATUS' | translate }}</th>
+        <td mat-cell *matCellDef="let order">
+          <span class="status-chip" [ngClass]="'status-' + order.status.toLowerCase()">
+            {{ order.status }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Expanded Row -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let order" [attr.colspan]="displayedColumns.length">
+          <div class="expanded-panel" *ngIf="expandedElement === order">
+            <mat-card>
+              <mat-card-title>
+                <mat-icon>info</mat-icon>
+                {{ 'ORDER.DETAILS.TITLE' | translate }}
+              </mat-card-title>
+              <mat-card-content>
+                <p><strong>{{ 'ORDER.DETAILS.TYPE' | translate }}:</strong> Diesel B5</p>
+                <p><strong>{{ 'ORDER.DETAILS.ESTIMATED_DELIVERY' | translate }}:</strong> 7 Mayo 2025</p>
+                <p><strong>{{ 'ORDER.DETAILS.NOTES' | translate }}:</strong> Coordinación previa con seguridad</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="order-row" (click)="toggleRow(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+    </table>
+  </div>
+</section>

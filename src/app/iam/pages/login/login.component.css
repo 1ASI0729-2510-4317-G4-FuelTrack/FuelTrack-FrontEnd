@@ -1,0 +1,176 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #ffffff, #e0f2fe);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo-text{
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 30px;        /* Más grande */
+  font-weight: 700;
+  color: #0c4a6e;
+}
+/* Logo */
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  color: #0c4a6e;
+  letter-spacing: 1px;
+}
+
+/* Navegación */
+.nav {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #0c4a6e;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #007bff;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* Botón Register */
+.register-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: 'Segoe UI', sans-serif;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* === Login UI === */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background: linear-gradient(to right, #f8fafc, #e0f2fe);
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-2px);
+}
+
+.login-card .logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #0d2c5c;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+button {
+  background-color: #28a745;
+  border: none;
+  padding: 12px;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.register {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register a:hover {
+  text-decoration: underline;
+}
