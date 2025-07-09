@@ -3,9 +3,10 @@
     <div class="sidebar-logo">
       <h2>🚛 FuelTrack</h2>
     </div>
-    <mat-nav-list>
+
+    <mat-nav-list class="nav-list">
       <a mat-list-item routerLink="/orders" routerLinkActive="active-link">📄 Orders</a>
-      <a mat-list-item routerLink="/" routerLinkActive="active-link"> Pay order</a>
+      <a mat-list-item routerLink="/payments" routerLinkActive="active-link">💳 Pay Order</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -13,3 +14,4 @@
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
