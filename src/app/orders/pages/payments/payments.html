@@ -1,0 +1,35 @@
+<div class="payments-container">
+  <div class="header">
+    <h2>Completar pago</h2>
+    <p class="subtitle">Pedidos pendientes por pagar</p>
+  </div>
+
+  <div *ngIf="payments.length === 0" class="no-payments">
+    No hay pagos pendientes.
+  </div>
+
+  <div class="card-list">
+    <mat-card *ngFor="let payment of payments" class="payment-card mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title>
+          <strong>Pedido #{{ payment.fuelOrder.orderId }}</strong>
+        </mat-card-title>
+        <mat-card-subtitle>
+          Estado: <span class="status">{{ payment.status }}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>Combustible:</strong> {{ payment.fuelOrder.fuelType }}</p>
+        <p><strong>Cantidad:</strong> {{ payment.fuelOrder.quantity }} gal</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary"
+                (click)="completePayment(payment)">
+          ✅ Pagar pedido
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
