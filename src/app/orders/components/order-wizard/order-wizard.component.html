@@ -1,0 +1,70 @@
+<div class="wizard-container" [@fadeIn]>
+  <h2 class="wizard-title">🛢️ Crear Nueva Orden</h2>
+
+  <form [formGroup]="orderForm" class="wizard-form">
+
+    <!-- Paso 1: Formulario -->
+    <div *ngIf="step === 0" class="step-content">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Terminal de despacho</mat-label>
+        <mat-select formControlName="terminal">
+          <mat-option *ngFor="let terminal of terminals" [value]="terminal">
+            {{ terminal }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Tipo de combustible</mat-label>
+          <mat-select formControlName="fuel">
+            <mat-option *ngFor="let fuel of fuelTypes" [value]="fuel">
+              {{ fuel }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Cantidad (galones)</mat-label>
+          <input matInput type="number" min="0" formControlName="amount" />
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nota adicional</mat-label>
+        <textarea matInput rows="2" formControlName="note"></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- Paso 2: Vista previa -->
+    <div *ngIf="step === 1" class="step-content summary-step">
+      <h3>📋 Tu orden</h3>
+      <div class="summary-box">
+        <p><strong>Terminal:</strong> {{ orderForm.get('terminal')?.value }}</p>
+        <p><strong>Combustible:</strong> {{ orderForm.get('fuel')?.value }}</p>
+        <p><strong>Cantidad:</strong> {{ orderForm.get('amount')?.value }} gal</p>
+        <p><strong>Nota:</strong> {{ orderForm.get('note')?.value || 'Sin nota' }}</p>
+      </div>
+    </div>
+
+    <!-- Navegación -->
+    <hr class="divider" />
+    <div class="wizard-buttons">
+      <button mat-raised-button color="primary" (click)="back()" [disabled]="step === 0">
+        ← Atrás
+      </button>
+
+      <button mat-raised-button color="primary" *ngIf="step < 1" (click)="next()">
+        Siguiente →
+      </button>
+
+      <button mat-raised-button color="primary" *ngIf="step === 1" (click)="createOrder()">
+        ✅ Crear Orden
+      </button>
+
+      <button mat-stroked-button color="primary" (click)="close()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
