@@ -1,0 +1,33 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 240px;
+  background: #0f172a;
+  color: white;
+  padding: 1rem;
+}
+
+.sidebar-logo h2 {
+  font-size: 22px;
+  color: #4ade80;
+  margin-bottom: 2rem;
+}
+
+.mat-list-item {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.mat-list-item:hover,
+.active-link {
+  background-color: #1e293b;
+  color: #4ade80;
+  border-left: 4px solid #4ade80;
+}
+
+.sidenav-content {
+  padding: 2rem;
+  background-color: #f1f5f9;
+}

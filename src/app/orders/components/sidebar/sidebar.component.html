@@ -1,0 +1,15 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidebar-logo">
+      <h2>🚛 FuelTrack</h2>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/orders" routerLinkActive="active-link">📄 Orders</a>
+      <a mat-list-item routerLink="/" routerLinkActive="active-link"> Pay order</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
