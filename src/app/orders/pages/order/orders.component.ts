@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { Order } from '../models/order.model';
-import { OrderService } from '../services/order.service';
-import { OrderWizardComponent } from '../components/order-wizard/order-wizard.component';
-import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { Order } from '../../models/order.model';
+import { OrderService } from '../../services/order.service';
+import { OrderWizardComponent } from '../../components/order-wizard/order-wizard.component';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-orders',
@@ -16,8 +16,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
     CommonModule,
     MatTableModule,
     MatButtonModule,
-    MatDialogModule,
-    SidebarComponent,
+    MatDialogModule
   ],
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']

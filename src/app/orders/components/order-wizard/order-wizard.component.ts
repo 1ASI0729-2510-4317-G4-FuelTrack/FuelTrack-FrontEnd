@@ -40,7 +40,7 @@ export class OrderWizardComponent {
   step = 0;
 
   orderForm: FormGroup;
-  fuelTypes = ['DIESEL', 'GLP', 'GASOLINE 95', 'GASOLINE 90'];
+  fuelTypes = ['DIESEL', 'GLP', 'GASOLINE95', 'GASOLINE90'];
   terminals = ['Lurín', 'Pisco', 'Callao'];
 
   constructor(
