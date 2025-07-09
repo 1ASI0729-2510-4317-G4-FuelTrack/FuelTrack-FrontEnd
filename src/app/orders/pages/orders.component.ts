@@ -1,20 +1,13 @@
+// src/app/orders/pages/orders.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatDialog } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
-
-import {OrderService} from '../services/order.service';
-import { OrderCardComponent } from '../components/order-card-component/order-card-component';
-import {TranslatePipe} from '@ngx-translate/core';
-import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Order } from '../models/order.model';
+import { OrderService } from '../services/order.service';
+import { OrderWizardComponent } from '../components/order-wizard/order-wizard.component';
+import { SidebarComponent } from '../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-orders',
@@ -23,60 +16,33 @@ import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
     CommonModule,
     MatTableModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatListModule,
-    MatBadgeModule,
-    RouterLink,
-    TranslatePipe,
-    MatCardContent,
-    MatCard,
-    MatCardTitle,
+    MatDialogModule,
+    SidebarComponent,
   ],
   templateUrl: './orders.component.html',
-  styleUrl: './orders.component.css',
+  styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  displayedColumns: string[] = [
+  displayedColumns: string[] = ['createdAt', 'requesterId', 'fuelType', 'quantity', 'note', 'status'];
+  orders: Order[] = [];
 
-    'expand',
-    'created',
-    'user',
-    'amount',
-    'terminal',
-    'id',
-    'status',
-  ];
-
-  orders: any[] = [];
-  expandedElement: any | null = null;
-
-  constructor(
-    private dialog: MatDialog,
-    private orderService: OrderService
-  ) {}
+  constructor(private orderService: OrderService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.orderService.getAllOrders().subscribe({
-      next: (data) => {
-        this.orders = data;
-        console.log('Órdenes recibidas:', data);
-      },
-      error: (err) => {
-        console.error('Error al obtener órdenes:', err);
-      }
-    });
+    this.loadOrders();
   }
 
-  toggleRow(row: any) {
-    this.expandedElement = this.expandedElement?.id === row.id ? null : row;
+  loadOrders(): void {
+    this.orderService.getAll().subscribe(data => this.orders = data);
   }
 
   openOrderWizard(): void {
-    this.dialog.open(OrderCardComponent, {
+    const dialogRef = this.dialog.open(OrderWizardComponent, {
       width: '800px',
-      panelClass: 'custom-dialog-container',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) this.loadOrders();
     });
   }
 }
