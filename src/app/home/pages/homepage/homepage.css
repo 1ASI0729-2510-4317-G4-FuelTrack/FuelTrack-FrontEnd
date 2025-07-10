@@ -1,11 +1,13 @@
 /* Colores base */
+/*
 :root {
   --primary-color: #003b5c;
   --accent-color: #2ca5c4;
   --light-gray: #f4f4f4;
   --dark-gray: #2e2e2e;
-  --text-color: #1a1a1a;
+  --text-color: #f4f4f4;
 }
+*/
 
 /* Reset */
 * {
@@ -57,8 +59,8 @@ ul {
 
 .nav-buttons button {
   margin-left: 1rem;
-  background-color: white;
-  color: var(--primary-color);
+  background-color: green;
+  color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
@@ -68,7 +70,7 @@ ul {
 }
 
 .nav-buttons button:hover {
-  background-color: var(--accent-color);
+  background-color: greenyellow;;
   color: white;
 }
 

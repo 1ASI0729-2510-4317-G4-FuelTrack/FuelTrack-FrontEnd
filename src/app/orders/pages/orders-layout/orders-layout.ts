@@ -11,7 +11,6 @@ import {SidebarComponent} from '../../components/sidebar/sidebar.component';
     MatSidenavContainer,
     RouterOutlet,
     MatSidenav,
-    SidebarComponent,
     MatNavList,
     MatListItem,
     RouterLink,

@@ -5,12 +5,14 @@ import { LoginComponent} from './iam/pages/login/login';
 import { RegisterComponent } from './iam/pages/register/register';
 import { PaymentsComponent} from './orders/pages/payments/payments';
 import { OrdersLayoutComponent } from './orders/pages/orders-layout/orders-layout';
+import {ManagementDrivers} from './drivers/pages/management-drivers/management-drivers';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'drivers', component: ManagementDrivers },
   {
     path: '',
     component: OrdersLayoutComponent, // el layout común con sidebar
