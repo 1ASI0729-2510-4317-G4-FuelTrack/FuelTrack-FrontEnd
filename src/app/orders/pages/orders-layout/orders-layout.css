@@ -4,7 +4,7 @@
 
 .sidenav {
   width: 240px;
-  background: #0f172a;
+  background: #f0fdf4;
   color: white;
   padding: 1.5rem 1rem;
   display: flex;
@@ -12,9 +12,20 @@
   gap: 1rem;
 }
 
+.active-link {
+  background-color: white;
+  color: #ffffff;
+  border-left: 4px solid #4ade80;
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+
 .main-content {
   height: 100vh;
   overflow-y: auto;
   padding: 2rem;
   background-color: #f1f5f9;
 }
+
+

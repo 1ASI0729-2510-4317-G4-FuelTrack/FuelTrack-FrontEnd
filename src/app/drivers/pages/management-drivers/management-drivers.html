@@ -1,0 +1,83 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidebar-logo">
+      <h2>🚛 FuelTrack</h2>
+    </div>
+
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/orders" routerLinkActive="active-link">📄 Orders</a>
+      <a mat-list-item routerLink="/payments" routerLinkActive="active-link">💳 Pay Order</a>
+      <a mat-list-item routerLink="/drivers" routerLinkActive="active-link">- Management Drivers</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <!-- Mueve tu contenido aquí dentro del mat-sidenav-content -->
+    <section class="management-container">
+      <div class="header-actions">
+        <h1>Gestión de Conductores</h1>
+
+        <div class="search-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Buscar conductor</mat-label>
+            <input
+              matInput
+              [(ngModel)]="searchTerm"
+              (ngModelChange)="onSearchChange()"
+              placeholder="Buscar por nombre, DNI o email">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openCreateDriverDialog()">
+            <mat-icon>add</mat-icon>
+            Nuevo Conductor
+          </button>
+        </div>
+      </div>
+
+      @if (isLoading) {
+        <div class="loading-spinner">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
+      } @else {
+        @if (filteredDrivers.length === 0) {
+          <div class="no-results">
+            <mat-icon>search_off</mat-icon>
+            <p>No se encontraron conductores</p>
+          </div>
+        } @else {
+          <div class="drivers-grid">
+            @for (driver of filteredDrivers; track driver.id) {
+              <mat-card class="driver-card">
+                <mat-card-header>
+                  <mat-card-title>{{ driver.fullName }}</mat-card-title>
+                  <mat-card-subtitle>DNI: {{ driver.dni }}</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                  <div class="driver-info">
+                    <p><mat-icon>email</mat-icon> {{ driver.email }}</p>
+                    <p><mat-icon>directions_car</mat-icon> {{ driver.vehicle }}</p>
+                  </div>
+                </mat-card-content>
+
+                <mat-card-actions align="end">
+                  <button
+                    mat-icon-button
+                    color="warn"
+                    (click)="openDeleteConfirmationDialog(driver)"
+                    aria-label="Eliminar conductor">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            }
+          </div>
+        }
+      }
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

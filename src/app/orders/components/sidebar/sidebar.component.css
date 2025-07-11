@@ -4,7 +4,7 @@
 
 .sidenav {
   width: 240px;
-  background: #0f172a;
+  background: green;
   color: #f8fafc;
   padding: 1.5rem 1rem;
 }
@@ -16,7 +16,7 @@
 
 .sidebar-logo h2 {
   font-size: 22px;
-  color: #4ade80;
+  color: white;
   margin: 0;
 }
 

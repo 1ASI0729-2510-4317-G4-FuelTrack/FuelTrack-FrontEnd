@@ -1,0 +1,107 @@
+<!-- src/app/shared/components/create-driver-dialog/create-driver-dialog.component.html -->
+<h2 mat-dialog-title>Nuevo Conductor</h2>
+<mat-dialog-content>
+  <form [formGroup]="driverForm" class="driver-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="firstName" required>
+        @if (hasError(firstName, 'required')) {
+          <mat-error>Nombre es requerido</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="lastName" required>
+        @if (hasError(lastName, 'required')) {
+          <mat-error>Apellido es requerido</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni" required>
+        @if (hasError(dni, 'required')) {
+          <mat-error>DNI es requerido</mat-error>
+        }
+        @if (hasError(dni, 'pattern')) {
+          <mat-error>DNI debe tener 8 dígitos</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+        @if (hasError(email, 'required')) {
+          <mat-error>Email es requerido</mat-error>
+        }
+        @if (hasError(email, 'email')) {
+          <mat-error>Email no válido</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="plate" required>
+        @if (hasError(plate, 'required')) {
+          <mat-error>Placa es requerida</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Marca</mat-label>
+        <input matInput formControlName="brand" required>
+        @if (hasError(brand, 'required')) {
+          <mat-error>Marca es requerida</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Modelo</mat-label>
+        <input matInput formControlName="model" required>
+        @if (hasError(model, 'required')) {
+          <mat-error>Modelo es requerido</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Año</mat-label>
+        <input matInput formControlName="year" type="number" required>
+        @if (hasError(year, 'required')) {
+          <mat-error>Año es requerido</mat-error>
+        }
+        @if (hasError(year, 'min')) {
+          <mat-error>Año mínimo: 2000</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Capacidad del tanque (galones)</mat-label>
+      <input matInput formControlName="tankCapacity" type="number" required>
+      @if (hasError(tankCapacity, 'required')) {
+        <mat-error>Capacidad es requerida</mat-error>
+      }
+      @if (hasError(tankCapacity, 'min')) {
+        <mat-error>Capacidad mínima: 500 galones</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="!driverForm.valid">
+    Guardar
+  </button>
+</mat-dialog-actions>
